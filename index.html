@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Carlos Serrano Escobar — Senior Software Engineer (ITS/SCADA). .NET, C++, WPF, React, AVEVA." />
+  <meta name="color-scheme" content="light dark" />
+
+  <meta property="og:title" content="Carlos Serrano Escobar — CV" />
+  <meta property="og:description" content="Senior Software Engineer (ITS/SCADA) — .NET, C++, WPF, React, AVEVA." />
+  <meta property="og:type" content="website" />
+
+  <title>Carlos Serrano Escobar | CV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,600;700&display=swap" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip.link">Skip to content</a>
+
+  <header class="topbar" role="banner">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__name">Carlos Serrano Escobar</div>
+        <div class="brand__title" data-i18n="brand.title">Senior Software Engineer — ITS/SCADA & Real-Time Systems</div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="#profile" data-nav data-i18n="nav.profile">Profile</a>
+        <a class="nav__link" href="#experience" data-nav data-i18n="nav.experience">Experience</a>
+        <a class="nav__link" href="#skills" data-nav data-i18n="nav.skills">Skills</a>
+        <a class="nav__link" href="#education" data-nav data-i18n="nav.education">Education</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn btn--ghost" type="button" id="themeToggle" aria-label="Toggle theme" data-i18n-aria="aria.themeToggle">
+          <span class="btn__icon" aria-hidden="true">
+            <svg class="icon icon--moon" viewBox="0 0 24 24" role="presentation" focusable="false">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+            </svg>
+            <svg class="icon icon--sun" viewBox="0 0 24 24" role="presentation" focusable="false">
+              <circle cx="12" cy="12" r="4" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="5" y2="12" />
+              <line x1="19" y1="12" x2="22" y2="12" />
+              <line x1="4.5" y1="4.5" x2="6.7" y2="6.7" />
+              <line x1="17.3" y1="17.3" x2="19.5" y2="19.5" />
+              <line x1="4.5" y1="19.5" x2="6.7" y2="17.3" />
+              <line x1="17.3" y1="6.7" x2="19.5" y2="4.5" />
+            </svg>
+          </span>
+          <span class="btn__text" data-i18n="button.theme">Theme</span>
+        </button>
+
+        <button class="btn btn--ghost" type="button" id="langToggle" aria-label="Switch to Spanish" data-i18n-aria="aria.langToggle">
+          <span class="btn__icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" role="presentation" focusable="false">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3a14 14 0 0 1 0 18" />
+              <path d="M12 3a14 14 0 0 0 0 18" />
+            </svg>
+          </span>
+          <span class="btn__text" data-i18n="button.lang">ES</span>
+        </button>
+
+        <button class="btn btn--primary" type="button" id="printBtn" aria-label="Print / Save as PDF" data-i18n-aria="aria.print">
+          <span class="btn__icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" role="presentation" focusable="false">
+              <path d="M6 9V3h12v6" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <path d="M6 14h12v7H6z" />
+              <path d="M18 14h1" />
+            </svg>
+          </span>
+          <span class="btn__text" data-i18n="button.print">Print</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Sidebar" data-i18n-aria="aria.sidebar">
+      <section class="card">
+        <h2 class="card__title" data-i18n="section.contact">Contact</h2>
+
+        <ul class="meta">
+          <li class="meta__item">
+            <span class="meta__label" data-i18n="meta.location">Location</span>
+            <span class="meta__value">204/14 WoodRuff Street, Port Melbourne VIC 3207, Australia</span>
+          </li>
+
+          <li class="meta__item">
+            <span class="meta__label" data-i18n="meta.phone">Phone</span>
+            <span class="meta__value">
+              <a href="tel:+61449829817">0449 829 817</a>
+              <button class="copy" type="button" data-copy="+61449829817" aria-label="Copy phone" data-i18n="button.copy" data-i18n-aria="aria.copyPhone">Copy</button>
+            </span>
+          </li>
+
+          <li class="meta__item">
+            <span class="meta__label" data-i18n="meta.email">Email</span>
+            <span class="meta__value">
+              <a href="mailto:carlos.serranoe1992@gmail.com">carlos.serranoe1992@gmail.com</a>
+              <button class="copy" type="button" data-copy="carlos.serranoe1992@gmail.com" aria-label="Copy email" data-i18n="button.copy" data-i18n-aria="aria.copyEmail">Copy</button>
+            </span>
+          </li>
+
+          <li class="meta__item">
+            <span class="meta__label" data-i18n="meta.nationality">Nationality</span>
+            <span class="meta__value" data-i18n="meta.nationalityValue">Spanish</span>
+          </li>
+
+          <li class="meta__item">
+            <span class="meta__label" data-i18n="meta.license">Driving license</span>
+            <span class="meta__value" data-i18n="meta.licenseValue">Yes</span>
+          </li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h3 class="card__subtitle" data-i18n="section.links">Links</h3>
+        <ul class="links">
+          <li><a href="https://github.com/everedx" target="_blank" rel="noreferrer">GitHub</a></li>
+        </ul>
+      </section>
+
+      <section class="card" aria-label="Languages" data-i18n-aria="aria.languagesCard">
+        <h2 class="card__title" data-i18n="section.languages">Languages</h2>
+        <ul class="bullets">
+          <li data-i18n="languages.spanish">Spanish (Native)</li>
+          <li data-i18n="languages.english">English (Professional proficiency)</li>
+        </ul>
+      </section>
+
+      <section class="card" aria-label="Quick strengths" data-i18n-aria="aria.highlightsCard">
+        <h2 class="card__title" data-i18n="section.highlights">Highlights</h2>
+        <ul class="bullets">
+          <li data-i18n="highlights.1">Real-time ITS/SCADA engineering</li>
+          <li data-i18n="highlights.2">.NET (C#) + C++ performance mindset</li>
+          <li data-i18n="highlights.3">WPF desktop tooling & React front ends</li>
+          <li data-i18n="highlights.4">Integration across vendors & systems</li>
+          <li data-i18n="highlights.5">Team leadership & delivery under constraints</li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- Content -->
+    <div class="content">
+      <section id="profile" class="section">
+        <div class="section__header">
+          <h1 class="section__title" data-i18n="section.profile">Profile</h1>
+        </div>
+
+        <div class="card card--flat">
+          <p class="lead" data-i18n="profile.lead">
+            Experienced and results-driven engineering professional with close to a decade in
+            Intelligent Transportation Systems (ITS) and SCADA, delivering high-availability,
+            real-time solutions across Australia, the United States, Canada, and Europe.
+          </p>
+
+          <p data-i18n="profile.p1">
+            Strong track record building and maintaining operational systems for traffic management,
+            tunnel/highway operations, and critical infrastructure monitoring—where reliability,
+            uptime, and responsiveness are non-negotiable.
+          </p>
+
+          <p data-i18n-html="profile.p2">
+            Core focus: <strong>.NET (C#)</strong> and <strong>C++</strong>. Also comfortable with
+            <strong>Java</strong> and <strong>C</strong>. Databases: <strong>SQL Server</strong>,
+            <strong>PostgreSQL</strong>, <strong>MySQL</strong>, and <strong>Oracle</strong>.
+          </p>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section__header">
+          <h2 class="section__title" data-i18n="section.experience">Employment History</h2>
+        </div>
+
+        <div class="timeline">
+          <!-- New role -->
+          <details class="job" open>
+            <summary class="job__summary">
+              <div class="job__top">
+                <div>
+                  <div class="job__role" data-i18n="exp.job1.role">Senior Software Engineer</div>
+                  <div class="job__company">M&amp;E Solutions</div>
+                </div>
+                <div class="job__dates" data-i18n="exp.job1.dates">Jul 2025 — Present</div>
+              </div>
+              <div class="job__tags" aria-hidden="true">
+                <span class="tag">.NET APIs</span>
+                <span class="tag">WPF</span>
+                <span class="tag">React</span>
+                <span class="tag">AVEVA</span>
+              </div>
+            </summary>
+
+            <div class="job__body">
+              <ul class="bullets">
+                <li data-i18n-html="exp.job1.b1">Develop and maintain <strong>.NET</strong> backend services and APIs supporting operational workflows and integrations.</li>
+                <li data-i18n-html="exp.job1.b2">Build and evolve <strong>WPF</strong> desktop tooling (MVVM, data binding, performance-conscious UI patterns).</li>
+                <li data-i18n-html="exp.job1.b3">Deliver <strong>React</strong> UI components and operational dashboards with a focus on reliability and clarity.</li>
+                <li data-i18n-html="exp.job1.b4">Work with <strong>AVEVA</strong> environments (e.g., OMI/System Platform) to integrate software components into control-room contexts.</li>
+                <li data-i18n-html="exp.job1.b5">Collaborate with multidisciplinary stakeholders; contribute through reviews, pragmatic architecture decisions, and delivery discipline.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- SICE -->
+          <details class="job">
+            <summary class="job__summary">
+              <div class="job__top">
+                <div>
+                  <div class="job__role" data-i18n="exp.job2.role">Software Engineer</div>
+                  <div class="job__company">SICE — Madrid / Melbourne</div>
+                </div>
+                <div class="job__dates" data-i18n="exp.job2.dates">Jul 2016 — Mar 2025</div>
+              </div>
+              <div class="job__tags" aria-hidden="true">
+                <span class="tag">ITS</span>
+                <span class="tag">SCADA</span>
+                <span class="tag">C++</span>
+                <span class="tag">C#</span>
+              </div>
+            </summary>
+
+            <div class="job__body">
+              <p class="muted" data-i18n-html="exp.job2.desc">
+                SICE is a systems integration company (100+ years in ITS). Core product: <strong>SIDERA</strong>,
+                a SCADA platform centralizing multiple subsystems in a single operational interface.
+              </p>
+
+              <ul class="bullets">
+                <li data-i18n-html="exp.job2.b1">Delivered SCADA solutions for road control systems across multiple regions (including Australia, North America, and Europe).</li>
+                <li data-i18n-html="exp.job2.b2">Improved performance and responsiveness in real-time components (strong focus on <strong>C++</strong> optimization).</li>
+                <li data-i18n-html="exp.job2.b3">Built <strong>C#</strong> services and APIs to extend platform capabilities and enable third-party integrations.</li>
+                <li data-i18n-html="exp.job2.b4">Led the Melbourne software team from Spain, managing a group of ~10 developers while still contributing hands-on.</li>
+                <li data-i18n-html="exp.job2.b5">Provided onsite support during later phases to ensure stable commissioning and operational readiness.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Rainbirth -->
+          <details class="job">
+            <summary class="job__summary">
+              <div class="job__top">
+                <div>
+                  <div class="job__role" data-i18n="exp.job3.role">Software Developer</div>
+                  <div class="job__company">Rainbirth SLU — Madrid</div>
+                </div>
+                <div class="job__dates" data-i18n="exp.job3.dates">Jan 2017 — Apr 2017</div>
+              </div>
+              <div class="job__tags" aria-hidden="true">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Agile</span>
+              </div>
+            </summary>
+
+            <div class="job__body">
+              <ul class="bullets">
+                <li data-i18n-html="exp.job3.b1">Built a PC-platform prototype as part of a small Agile team, using <strong>Unity</strong> and <strong>C#</strong>.</li>
+                <li data-i18n-html="exp.job3.b2">Worked end-to-end from prototyping to internal handover for further product exploration.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- VassIT -->
+          <details class="job">
+            <summary class="job__summary">
+              <div class="job__top">
+                <div>
+                  <div class="job__role" data-i18n="exp.job4.role">Software Developer</div>
+                  <div class="job__company">VassIT — London</div>
+                </div>
+                <div class="job__dates" data-i18n="exp.job4.dates">Mar 2016 — Jun 2016</div>
+              </div>
+              <div class="job__tags" aria-hidden="true">
+                <span class="tag">Automation</span>
+                <span class="tag">Web</span>
+                <span class="tag">Payments</span>
+              </div>
+            </summary>
+
+            <div class="job__body">
+              <ul class="bullets">
+                <li data-i18n-html="exp.job4.b1">Contributed to automation tools supporting the testing team.</li>
+                <li data-i18n-html="exp.job4.b2">Helped create a web application integrated with <strong>PayPal</strong> for deployment use cases.</li>
+                <li data-i18n-html="exp.job4.b3">First professional experience in software development within a consulting environment.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section__header">
+          <h2 class="section__title" data-i18n="section.skills">Skills</h2>
+        </div>
+
+        <div class="card card--flat">
+          <div class="skillbar">
+            <input id="skillSearch" class="input" type="search" placeholder="Search skills (e.g., WPF, SQL, React)" aria-label="Search skills" data-i18n-placeholder="skills.placeholder" data-i18n-aria="aria.searchSkills" />
+            <div class="chiprow" role="group" aria-label="Skill category filters" data-i18n-aria="aria.skillFilters">
+              <button class="chip chip--active" type="button" data-skill-filter="all" data-i18n="skills.all">All</button>
+              <button class="chip" type="button" data-skill-filter="languages" data-i18n="skills.languages">Languages</button>
+              <button class="chip" type="button" data-skill-filter="frameworks" data-i18n="skills.frameworks">Frameworks</button>
+              <button class="chip" type="button" data-skill-filter="databases" data-i18n="skills.databases">Databases</button>
+              <button class="chip" type="button" data-skill-filter="tools" data-i18n="skills.tools">Tools</button>
+              <button class="chip" type="button" data-skill-filter="domains" data-i18n="skills.domains">Domains</button>
+            </div>
+          </div>
+
+          <div class="skillgrid" id="skillGrid" aria-live="polite">
+            <!-- Languages -->
+            <button class="skill" type="button" data-skill="C#" data-cat="languages">C#</button>
+            <button class="skill" type="button" data-skill=".NET" data-cat="frameworks">.NET</button>
+            <button class="skill" type="button" data-skill=".NET Core" data-cat="frameworks">.NET Core</button>
+            <button class="skill" type="button" data-skill="C++" data-cat="languages">C++</button>
+            <button class="skill" type="button" data-skill="C" data-cat="languages">C</button>
+            <button class="skill" type="button" data-skill="Java" data-cat="languages">Java</button>
+
+            <!-- UI / Web -->
+            <button class="skill" type="button" data-skill="WPF" data-cat="frameworks">WPF</button>
+            <button class="skill" type="button" data-skill="GUI Programming" data-cat="frameworks">GUI Programming</button>
+            <button class="skill" type="button" data-skill="React" data-cat="frameworks">React</button>
+
+            <!-- Tools -->
+            <button class="skill" type="button" data-skill="Visual Studio" data-cat="tools">Visual Studio</button>
+            <button class="skill" type="button" data-skill="Unity" data-cat="tools">Unity</button>
+
+            <!-- Databases -->
+            <button class="skill" type="button" data-skill="SQL Server" data-cat="databases">SQL Server</button>
+            <button class="skill" type="button" data-skill="PostgreSQL" data-cat="databases">PostgreSQL</button>
+            <button class="skill" type="button" data-skill="MySQL" data-cat="databases">MySQL</button>
+            <button class="skill" type="button" data-skill="Oracle" data-cat="databases">Oracle</button>
+
+            <!-- Domains -->
+            <button class="skill" type="button" data-skill="ITS" data-cat="domains">ITS</button>
+            <button class="skill" type="button" data-skill="SCADA" data-cat="domains">SCADA</button>
+            <button class="skill" type="button" data-skill="System Integration" data-cat="domains">System Integration</button>
+            <button class="skill" type="button" data-skill="AVEVA" data-cat="domains">AVEVA</button>
+          </div>
+
+          <p class="muted small" id="skillHint" data-i18n="skills.tip">
+            Tip: click a chip to copy the skill name.
+          </p>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="section__header">
+          <h2 class="section__title" data-i18n="section.education">Education</h2>
+        </div>
+
+        <div class="card card--flat">
+          <div class="edu">
+            <div class="edu__top">
+              <div>
+                <div class="edu__title" data-i18n="education.program">Certificate of Higher Education — Multiplatform Software Development</div>
+                <div class="edu__meta" data-i18n="education.dates">Sep 2015 — Jun 2016</div>
+              </div>
+            </div>
+
+            <ul class="bullets">
+              <li data-i18n-html="education.b1">Graduated with excellent results and received an <strong>ERASMUS</strong> scholarship (placement at VassIT).</li>
+              <li data-i18n-html="education.b2">Final project: built a torrent application from scratch with a community component and a <strong>Java</strong>-based backend.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer__left">
+          <span class="muted small" data-i18n="footer.updated">Last updated: Jan 2026</span>
+        </div>
+        <div class="footer__right">
+          <button class="btn btn--ghost" type="button" id="backToTop" data-i18n="button.backToTop" data-i18n-aria="aria.backToTop">Back to top</button>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carlos Serrano Escobar",
+    "jobTitle": "Senior Software Engineer",
+    "email": "mailto:carlos.serranoe1992@gmail.com",
+    "telephone": "+61 449 829 817",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "204/14 WoodRuff Street",
+      "addressLocality": "Port Melbourne",
+      "addressRegion": "VIC",
+      "postalCode": "3207",
+      "addressCountry": "AU"
+    }
+  }
+  </script>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
