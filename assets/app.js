@@ -63,6 +63,8 @@
         "Work with <strong>AVEVA</strong> environments (e.g., OMI/System Platform) to integrate software components into control-room contexts.",
       "exp.job1.b5":
         "Collaborate with multidisciplinary stakeholders; contribute through reviews, pragmatic architecture decisions, and delivery discipline.",
+      "exp.job1.b6":
+        "Build monitoring dashboards with <strong>Grafana</strong> to improve operational visibility.",
       "exp.job2.role": "Software Engineer",
       "exp.job2.dates": "Jul 2016 - Mar 2025",
       "exp.job2.desc":
@@ -179,6 +181,8 @@
         "Trabajar con entornos <strong>AVEVA</strong> (p. ej., OMI/System Platform) para integrar componentes de software en salas de control.",
       "exp.job1.b5":
         "Colaborar con equipos multidisciplinares; aportar en revisiones, decisiones de arquitectura pragmáticas y disciplina de entrega.",
+      "exp.job1.b6":
+        "Construir dashboards de monitorización con <strong>Grafana</strong> para mejorar la visibilidad operativa.",
       "exp.job2.role": "Ingeniero de software",
       "exp.job2.dates": "Jul 2016 - Mar 2025",
       "exp.job2.desc":
