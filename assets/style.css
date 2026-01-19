@@ -8,6 +8,7 @@
   --accent: #0f766e;
   --accent2: #f59e0b;
   --accent-contrast: #f8fafc;
+  --trail: #7fc7b5;
 
   --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
   --shadow-soft: 0 10px 26px rgba(15, 23, 42, 0.08);
@@ -31,6 +32,7 @@
   --accent: #5cc8b8;
   --accent2: #f4b84a;
   --accent-contrast: #061314;
+  --trail: #5fbfa3;
 
   --shadow: 0 18px 44px rgba(2, 6, 23, 0.45);
   --shadow-soft: 0 12px 30px rgba(2, 6, 23, 0.25);
@@ -50,6 +52,56 @@ body{
     radial-gradient(520px 380px at 12% 78%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, transparent 62%),
     radial-gradient(420px 320px at 88% 88%, color-mix(in srgb, var(--accent2) 14%, transparent) 0%, transparent 62%);
   background-attachment: fixed;
+}
+
+.cursor-trail{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+
+.whisper{
+  position: fixed;
+  left: var(--whisper-x, 50%);
+  top: var(--whisper-y, 30%);
+  transform: translate(-50%, -50%) rotate(var(--whisper-rotate, 0deg)) scale(var(--whisper-scale, 1));
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.4vw, 20px);
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--trail) 70%, var(--text) 30%);
+  text-shadow:
+    0 0 18px color-mix(in srgb, var(--trail) 30%, transparent),
+    0 0 36px color-mix(in srgb, var(--trail) 18%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(0.2px);
+  --whisper-part-duration: 2.4s;
+  --whisper-gap: 0.9s;
+  line-height: 1.2;
+}
+.whisper__part{
+  display: block;
+  opacity: 0;
+}
+.whisper.is-show .whisper__part{
+  animation: whisper-part var(--whisper-part-duration) ease-in-out forwards;
+}
+.whisper.is-show .whisper__part--second{
+  animation-delay: calc(var(--whisper-part-duration) + var(--whisper-gap));
+}
+
+@keyframes whisper-part{
+  0%{ opacity: 0; transform: translateY(2px); }
+  20%{ opacity: 0.7; transform: translateY(0); }
+  70%{ opacity: 0.55; }
+  100%{ opacity: 0; transform: translateY(-1px); }
 }
 
 ::selection{
@@ -193,6 +245,8 @@ a:hover{
   display: grid;
   gap: var(--gap);
   grid-template-columns: 1fr;
+  position: relative;
+  z-index: 1;
 }
 
 .sidebar{
@@ -296,6 +350,31 @@ a:hover{
 
 .section{
   scroll-margin-top: 90px;
+  position: relative;
+}
+.section > *{
+  position: relative;
+  z-index: 1;
+}
+.section::after{
+  content: "";
+  position: absolute;
+  inset: -8px -10px;
+  border-radius: calc(var(--radius) + 6px);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 0 24px 10px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.section--flash::after{
+  animation: section-flash 1.25s ease-out;
+}
+
+@keyframes section-flash{
+  0%{ opacity: 0; }
+  35%{ opacity: 1; }
+  100%{ opacity: 0; }
 }
 .section__header{
   display: flex;
@@ -558,13 +637,62 @@ p{ line-height: 1.65; margin: 10px 0; }
   .content .section{
     animation: none !important;
   }
+  .section--flash::after{
+    animation: none;
+    opacity: 1;
+  }
+  .cursor-trail{
+    display: none !important;
+  }
+  .whisper{
+    display: none !important;
+  }
 }
 
 @media print{
-  .topbar, .toast, .copy, .actions, .nav, #backToTop{ display: none !important; }
-  body{ background: #fff !important; color: #000 !important; }
-  .card, .job{ box-shadow: none !important; }
-  a{ text-decoration: none; color: #000; }
-  .layout{ max-width: none; padding: 0; }
+  @page{
+    margin: 16mm 14mm;
+  }
+
+  .topbar, .toast, .copy, .actions, .nav, #backToTop, .cursor-trail, .whisper{ display: none !important; }
+  body{
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  a{ text-decoration: none; color: #111; }
+  .layout{
+    max-width: none;
+    padding: 0;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .sidebar, .content{ gap: 14px; }
   .sidebar{ position: static; }
+  .card, .job{
+    box-shadow: none !important;
+    background: #fff !important;
+    border-color: #dcdcdc !important;
+  }
+  .section__header{
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+  .job__summary{ padding: 10px 12px; }
+  .job__body{ padding: 0 12px 10px; }
+  .tag{ border-color: #d0d0d0; color: #444; }
+  .muted{ color: #444; }
+
+  .section,
+  .card,
+  .job,
+  .timeline,
+  .edu,
+  .footer{
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+  .job__summary::after{ display: none; }
 }

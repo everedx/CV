@@ -20,6 +20,7 @@
 
 <body>
   <a class="skip-link" href="#main" data-i18n="skip.link">Skip to content</a>
+  <canvas id="trailCanvas" class="cursor-trail" aria-hidden="true"></canvas>
 
   <header class="topbar" role="banner">
     <div class="topbar__inner">
@@ -28,7 +29,7 @@
         <div class="brand__title" data-i18n="brand.title">Senior Software Engineer — ITS/SCADA & Real-Time Systems</div>
       </div>
 
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" aria-label="Primary" data-i18n-aria="aria.primaryNav">
         <a class="nav__link" href="#profile" data-nav data-i18n="nav.profile">Profile</a>
         <a class="nav__link" href="#experience" data-nav data-i18n="nav.experience">Experience</a>
         <a class="nav__link" href="#skills" data-nav data-i18n="nav.skills">Skills</a>
@@ -349,9 +350,7 @@
             <button class="skill" type="button" data-skill="AVEVA" data-cat="domains">AVEVA</button>
           </div>
 
-          <p class="muted small" id="skillHint" data-i18n="skills.tip">
-            Tip: click a chip to copy the skill name.
-          </p>
+
         </div>
       </section>
 
