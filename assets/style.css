@@ -578,13 +578,31 @@ p{ line-height: 1.65; margin: 10px 0; }
   --neon-strong: color-mix(in srgb, var(--neon) 80%, white);
   --neon-soft: color-mix(in srgb, var(--neon) 26%, transparent);
   --neon-border: color-mix(in srgb, var(--neon) 45%, var(--border));
+  --journey-card-bg: color-mix(in srgb, var(--panel) 86%, transparent);
+  --journey-text: var(--text);
+  --journey-muted: color-mix(in srgb, var(--neon) 45%, var(--muted));
+  --map-base: color-mix(in srgb, var(--panel2) 88%, transparent);
+  --map-land: color-mix(in srgb, var(--neon) 14%, var(--panel));
+  --map-stroke: color-mix(in srgb, var(--neon) 35%, transparent);
+  --map-grid: color-mix(in srgb, var(--neon) 12%, transparent);
+}
+[data-theme="light"] .journey{
+  --neon-border: color-mix(in srgb, var(--neon) 65%, #0b1511);
+  --journey-card-bg: #0b1511;
+  --journey-text: #e7fff1;
+  --journey-muted: color-mix(in srgb, var(--neon) 60%, #8aa398);
+  --map-base: #0d1913;
+  --map-land: color-mix(in srgb, var(--neon) 28%, #0b140f);
+  --map-stroke: color-mix(in srgb, var(--neon) 65%, transparent);
+  --map-grid: color-mix(in srgb, var(--neon) 26%, transparent);
 }
 .journey-card{
   border-color: var(--neon-border);
   background:
     radial-gradient(120% 120% at 0% 0%, color-mix(in srgb, var(--neon) 14%, transparent) 0%, transparent 60%),
     radial-gradient(120% 120% at 100% 100%, color-mix(in srgb, var(--neon) 12%, transparent) 0%, transparent 62%),
-    color-mix(in srgb, var(--panel) 86%, transparent);
+    var(--journey-card-bg);
+  color: var(--journey-text);
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--neon) 22%, transparent),
     0 20px 45px color-mix(in srgb, var(--neon) 12%, transparent);
@@ -614,13 +632,13 @@ p{ line-height: 1.65; margin: 10px 0; }
 }
 .journey__city{
   font-size: 16px;
-  color: var(--text);
+  color: var(--journey-text);
 }
 .journey__status{
   font-size: 11px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--neon) 45%, var(--muted));
+  color: var(--journey-muted);
 }
 .journey__controls{
   display: grid;
@@ -680,7 +698,7 @@ p{ line-height: 1.65; margin: 10px 0; }
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   font-size: 10px;
-  color: color-mix(in srgb, var(--neon) 45%, var(--muted));
+  color: var(--journey-muted);
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -698,7 +716,7 @@ p{ line-height: 1.65; margin: 10px 0; }
   background:
     radial-gradient(120% 120% at 80% 0%, color-mix(in srgb, var(--neon) 10%, transparent) 0%, transparent 60%),
     radial-gradient(120% 120% at 10% 100%, color-mix(in srgb, var(--neon) 12%, transparent) 0%, transparent 65%),
-    color-mix(in srgb, var(--panel2) 88%, transparent);
+    var(--map-base);
   box-shadow: inset 0 0 30px color-mix(in srgb, var(--neon) 14%, transparent);
 }
 .journey__map::before{
@@ -706,8 +724,8 @@ p{ line-height: 1.65; margin: 10px 0; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, color-mix(in srgb, var(--neon) 12%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, var(--neon) 12%, transparent) 1px, transparent 1px);
+    linear-gradient(90deg, var(--map-grid) 1px, transparent 1px),
+    linear-gradient(0deg, var(--map-grid) 1px, transparent 1px);
   background-size: 70px 70px;
   opacity: 0.35;
   pointer-events: none;
@@ -719,8 +737,8 @@ p{ line-height: 1.65; margin: 10px 0; }
   height: 100%;
 }
 .map__land path{
-  fill: color-mix(in srgb, var(--neon) 14%, var(--panel));
-  stroke: color-mix(in srgb, var(--neon) 35%, transparent);
+  fill: var(--map-land);
+  stroke: var(--map-stroke);
   stroke-width: 1.1;
   stroke-linejoin: round;
   stroke-linecap: round;
