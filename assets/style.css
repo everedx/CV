@@ -573,6 +573,215 @@ p{ line-height: 1.65; margin: 10px 0; }
 }
 .skill.is-hidden{ display: none; }
 
+.journey{
+  --neon: #6bff9a;
+  --neon-strong: color-mix(in srgb, var(--neon) 80%, white);
+  --neon-soft: color-mix(in srgb, var(--neon) 26%, transparent);
+  --neon-border: color-mix(in srgb, var(--neon) 45%, var(--border));
+}
+.journey-card{
+  border-color: var(--neon-border);
+  background:
+    radial-gradient(120% 120% at 0% 0%, color-mix(in srgb, var(--neon) 14%, transparent) 0%, transparent 60%),
+    radial-gradient(120% 120% at 100% 100%, color-mix(in srgb, var(--neon) 12%, transparent) 0%, transparent 62%),
+    color-mix(in srgb, var(--panel) 86%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--neon) 22%, transparent),
+    0 20px 45px color-mix(in srgb, var(--neon) 12%, transparent);
+}
+.journey-card::before{
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(140% 140% at 15% 0%, color-mix(in srgb, var(--neon) 20%, transparent) 0%, transparent 70%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+.journey__readout{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.journey__year{
+  font-family: var(--font-display);
+  font-size: 30px;
+  letter-spacing: .06em;
+  color: var(--neon-strong);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--neon) 45%, transparent);
+}
+.journey__city{
+  font-size: 16px;
+  color: var(--text);
+}
+.journey__status{
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--neon) 45%, var(--muted));
+}
+.journey__controls{
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+.journey__range{
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--neon-border);
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--neon) 75%, transparent) 0%,
+      color-mix(in srgb, var(--neon) 75%, transparent) var(--range-pct, 0%),
+      color-mix(in srgb, var(--neon) 18%, transparent) var(--range-pct, 0%),
+      color-mix(in srgb, var(--neon) 18%, transparent) 100%
+    );
+  outline: none;
+}
+.journey__range::-webkit-slider-runnable-track{
+  height: 10px;
+  background: transparent;
+}
+.journey__range::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neon-strong);
+  border: 2px solid color-mix(in srgb, var(--neon) 40%, #0a1b12);
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--neon) 55%, transparent),
+    0 0 24px color-mix(in srgb, var(--neon) 35%, transparent);
+  cursor: pointer;
+  margin-top: -6px;
+}
+.journey__range::-moz-range-track{
+  height: 10px;
+  background: transparent;
+  border: none;
+}
+.journey__range::-moz-range-thumb{
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neon-strong);
+  border: 2px solid color-mix(in srgb, var(--neon) 40%, #0a1b12);
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--neon) 55%, transparent),
+    0 0 24px color-mix(in srgb, var(--neon) 35%, transparent);
+  cursor: pointer;
+}
+.journey__ticks{
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  font-size: 10px;
+  color: color-mix(in srgb, var(--neon) 45%, var(--muted));
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.journey__ticks span{
+  text-align: center;
+}
+.journey__map{
+  position: relative;
+  margin-top: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--neon-border);
+  overflow: hidden;
+  aspect-ratio: 2 / 1;
+  min-height: 240px;
+  background:
+    radial-gradient(120% 120% at 80% 0%, color-mix(in srgb, var(--neon) 10%, transparent) 0%, transparent 60%),
+    radial-gradient(120% 120% at 10% 100%, color-mix(in srgb, var(--neon) 12%, transparent) 0%, transparent 65%),
+    color-mix(in srgb, var(--panel2) 88%, transparent);
+  box-shadow: inset 0 0 30px color-mix(in srgb, var(--neon) 14%, transparent);
+}
+.journey__map::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, color-mix(in srgb, var(--neon) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--neon) 12%, transparent) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+.journey__svg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.map__land path{
+  fill: color-mix(in srgb, var(--neon) 14%, var(--panel));
+  stroke: color-mix(in srgb, var(--neon) 35%, transparent);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.map__marker{
+  fill: color-mix(in srgb, var(--neon) 75%, white);
+  stroke: color-mix(in srgb, var(--neon) 55%, transparent);
+  stroke-width: 1.1;
+  opacity: 0.55;
+  transition: opacity .2s ease, transform .2s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.map__marker.is-active{
+  opacity: 1;
+  transform: scale(1.35);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon) 70%, transparent));
+}
+.map__pulse{
+  fill: none;
+  stroke: var(--neon-strong);
+  stroke-width: 1.4;
+  opacity: 0.8;
+  animation: map-pulse 2.6s ease-out infinite;
+}
+.map__pin{
+  fill: var(--neon-strong);
+  stroke: color-mix(in srgb, var(--neon) 60%, #00120a);
+  stroke-width: 1;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon) 70%, transparent));
+}
+.map__label{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-20%, -120%);
+  background: color-mix(in srgb, var(--panel) 82%, transparent);
+  border: 1px solid var(--neon-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  display: grid;
+  gap: 2px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 10px;
+  color: color-mix(in srgb, var(--neon) 60%, var(--text));
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--neon) 24%, transparent),
+    0 0 40px color-mix(in srgb, var(--neon) 14%, transparent);
+  pointer-events: none;
+}
+.map__label-year{
+  font-size: 9px;
+  opacity: 0.75;
+}
+.map__label-city{
+  font-size: 11px;
+  color: var(--neon-strong);
+}
+
 .footer{
   display: flex;
   align-items: center;
@@ -624,6 +833,7 @@ p{ line-height: 1.65; margin: 10px 0; }
   .content .section:nth-child(2){ animation-delay: .12s; }
   .content .section:nth-child(3){ animation-delay: .18s; }
   .content .section:nth-child(4){ animation-delay: .24s; }
+  .content .section:nth-child(5){ animation-delay: .3s; }
 }
 
 @keyframes rise{
@@ -646,6 +856,9 @@ p{ line-height: 1.65; margin: 10px 0; }
   }
   .whisper{
     display: none !important;
+  }
+  .map__pulse{
+    animation: none;
   }
 }
 

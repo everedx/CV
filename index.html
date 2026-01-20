@@ -377,6 +377,78 @@
         </div>
       </section>
 
+      <section id="journey" class="section journey">
+        <div class="section__header">
+          <h2 class="section__title" data-i18n="section.journey">Journey Timeline</h2>
+          <p class="section__hint" data-i18n="journey.hint">Move the timeline to see where I was.</p>
+        </div>
+
+        <div class="card journey-card">
+          <div class="journey__readout">
+            <div>
+              <div class="journey__year" id="journeyYear">2015</div>
+              <div class="journey__city" id="journeyLocation" aria-live="polite">London</div>
+            </div>
+            <div class="journey__status" data-i18n="journey.status">Location on map</div>
+          </div>
+
+          <div class="journey__controls">
+            <input class="journey__range" type="range" id="journeyRange" min="2015" max="2026" step="1" value="2015" list="journeyTicks" aria-label="Timeline year" data-i18n-aria="journey.slider" />
+            <datalist id="journeyTicks">
+              <option value="2015" label="2015"></option>
+              <option value="2016" label="2016"></option>
+              <option value="2017" label="2017"></option>
+              <option value="2018" label="2018"></option>
+              <option value="2019" label="2019"></option>
+              <option value="2020" label="2020"></option>
+              <option value="2021" label="2021"></option>
+              <option value="2022" label="2022"></option>
+              <option value="2023" label="2023"></option>
+              <option value="2024" label="2024"></option>
+              <option value="2025" label="2025"></option>
+              <option value="2026" label="2026"></option>
+            </datalist>
+            <div class="journey__ticks" aria-hidden="true">
+              <span>2015</span>
+              <span>2016</span>
+              <span>2017</span>
+              <span>2018</span>
+              <span>2019</span>
+              <span>2020</span>
+              <span>2021</span>
+              <span>2022</span>
+              <span>2023</span>
+              <span>2024</span>
+              <span>2025</span>
+              <span>2026</span>
+            </div>
+          </div>
+
+          <div class="journey__map" id="journeyMap">
+            <svg class="journey__svg" viewBox="0 0 1000 500" aria-hidden="true">
+              <g class="map__land">
+                <path d="M33.3 52.8 L83.3 55.6 L138.9 55.6 L194.4 55.6 L277.8 63.9 L338.9 83.3 L352.8 113.9 L313.9 127.8 L291.7 150 L275 180.6 L236.1 180.6 L222.2 194.4 L250 208.3 L272.2 225 L202.8 194.4 L175 161.1 L155.6 125 L125 97.2 L83.3 88.9 Z" />
+                <path d="M283.3 216.7 L316.7 222.2 L405.6 236.1 L402.8 277.8 L380.6 313.9 L344.4 344.4 L313.9 388.9 L305.6 402.8 L291.7 361.1 L286.1 283.3 L277.8 250 Z" />
+                <path d="M472.2 55.6 L555.6 55.6 L583.3 69.4 L611.1 83.3 L597.2 125 L569.4 138.9 L533.3 133.3 L486.1 138.9 L486.1 111.1 L477.8 88.9 Z" />
+                <path d="M452.8 152.8 L452.8 194.4 L486.1 236.1 L527.8 250 L625 222.2 L611.1 277.8 L597.2 305.6 L577.8 333.3 L555.6 347.2 L527.8 333.3 L513.9 305.6 L500 263.9 L513.9 222.2 L588.9 166.7 L527.8 152.8 Z" />
+                <path d="M666.7 41.7 L750 55.6 L833.3 55.6 L888.9 69.4 L916.7 97.2 L888.9 125 L861.1 152.8 L833.3 194.4 L791.7 222.2 L763.9 208.3 L722.2 194.4 L694.4 180.6 L666.7 166.7 L638.9 152.8 L666.7 138.9 L694.4 125 L666.7 97.2 Z" />
+                <path d="M861.1 277.8 L902.8 283.3 L925 319.4 L916.7 355.6 L888.9 361.1 L819.4 344.4 L822.2 294.4 Z" />
+                <path d="M361.1 22.2 L444.4 41.7 L430.6 61.1 L375 83.3 L333.3 55.6 Z" />
+              </g>
+              <g class="map__markers" data-map-markers></g>
+              <g class="map__active" data-map-active>
+                <circle class="map__pulse" cx="0" cy="0" r="16"></circle>
+                <circle class="map__pin" cx="0" cy="0" r="4.5"></circle>
+              </g>
+            </svg>
+            <div class="map__label" id="journeyLabel" aria-hidden="true">
+              <div class="map__label-year" id="journeyLabelYear">2015</div>
+              <div class="map__label-city" id="journeyLabelCity">London</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer class="footer">
         <div class="footer__left">
           <span class="muted small" data-i18n="footer.updated">Last updated: Jan 2026</span>

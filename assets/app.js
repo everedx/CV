@@ -31,6 +31,7 @@
       "section.experience": "Employment History",
       "section.skills": "Skills",
       "section.education": "Education",
+      "section.journey": "Journey Timeline",
       "meta.location": "Location",
       "meta.phone": "Phone",
       "meta.email": "Email",
@@ -106,6 +107,9 @@
         "Graduated with excellent results and received an <strong>ERASMUS</strong> scholarship (placement at VassIT).",
       "education.b2":
         "Final project: built a torrent application from scratch with a community component and a <strong>Java</strong>-based backend.",
+      "journey.hint": "Move the timeline to see where I was.",
+      "journey.status": "Location on map",
+      "journey.slider": "Timeline year",
       "footer.updated": "Last updated: Jan 2026",
       "aria.themeToggle": "Toggle theme",
       "aria.langToggle": "Switch to Spanish",
@@ -246,10 +250,15 @@
       "toast.language": "Idioma: {lang}",
       "lang.en": "Inglés",
       "lang.es": "Español",
+      "section.journey": "Linea de tiempo",
+      "journey.hint": "Mueve el timeline para ver donde estaba.",
+      "journey.status": "Ubicacion en el mapa",
+      "journey.slider": "Año del timeline",
     },
   };
 
   let currentLang = "en";
+  let journeyUpdater = null;
 
   function t(key, vars) {
     const dict = translations[currentLang] || translations.en;
@@ -286,6 +295,8 @@
       const value = t(key);
       if (value) el.setAttribute("aria-label", value);
     });
+
+    if (typeof journeyUpdater === "function") journeyUpdater();
   }
 
   const storedLang = localStorage.getItem("cv_lang");
@@ -632,6 +643,142 @@
       }
     });
   });
+
+  // Journey timeline + map
+  const journeyRange = document.getElementById("journeyRange");
+  const journeyYear = document.getElementById("journeyYear");
+  const journeyLocation = document.getElementById("journeyLocation");
+  const journeyMap = document.getElementById("journeyMap");
+  const journeyLabel = document.getElementById("journeyLabel");
+  const journeyLabelYear = document.getElementById("journeyLabelYear");
+  const journeyLabelCity = document.getElementById("journeyLabelCity");
+  const journeySvg = document.querySelector(".journey__svg");
+  const markersGroup = journeySvg?.querySelector("[data-map-markers]");
+  const activeGroup = journeySvg?.querySelector("[data-map-active]");
+  const activePulse = activeGroup?.querySelector(".map__pulse");
+  const activePin = activeGroup?.querySelector(".map__pin");
+
+  if (
+    journeyRange &&
+    journeyYear &&
+    journeyLocation &&
+    journeyMap &&
+    journeyLabel &&
+    journeyLabelYear &&
+    journeyLabelCity &&
+    journeySvg &&
+    markersGroup &&
+    activePulse &&
+    activePin
+  ) {
+    const viewBox = journeySvg.getAttribute("viewBox") || "0 0 1000 500";
+    const viewParts = viewBox.split(/\s+/).map(Number);
+    const mapWidth = viewParts[2] || 1000;
+    const mapHeight = viewParts[3] || 500;
+
+    const journeyStops = [
+      { start: 2015, end: 2015, city: { en: "London", es: "Londres" }, lat: 51.5074, lon: -0.1278 },
+      { start: 2016, end: 2016, city: { en: "Madrid", es: "Madrid" }, lat: 40.4168, lon: -3.7038 },
+      { start: 2017, end: 2017, city: { en: "Seattle", es: "Seattle" }, lat: 47.6062, lon: -122.3321 },
+      { start: 2018, end: 2018, city: { en: "Montreal", es: "Montreal" }, lat: 45.5019, lon: -73.5674 },
+      { start: 2019, end: 2019, city: { en: "Madrid", es: "Madrid" }, lat: 40.4168, lon: -3.7038 },
+      { start: 2020, end: 2025, city: { en: "Melbourne", es: "Melbourne" }, lat: -37.8136, lon: 144.9631 },
+      { start: 2026, end: 2026, city: { en: "Gold Coast", es: "Gold Coast" }, lat: -28.0167, lon: 153.4 },
+    ];
+
+    const uniqueStops = [];
+    const stopByKey = new Map();
+
+    journeyStops.forEach((stop) => {
+      const key = `${stop.lat.toFixed(3)}|${stop.lon.toFixed(3)}`;
+      if (!stopByKey.has(key)) {
+        stopByKey.set(key, { ...stop, key });
+        uniqueStops.push(stopByKey.get(key));
+      }
+    });
+
+    function project(lat, lon) {
+      const x = ((lon + 180) / 360) * mapWidth;
+      const y = ((90 - lat) / 180) * mapHeight;
+      return { x, y };
+    }
+
+    const markerEls = new Map();
+    uniqueStops.forEach((stop) => {
+      const { x, y } = project(stop.lat, stop.lon);
+      const marker = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      marker.setAttribute("class", "map__marker");
+      marker.setAttribute("cx", x.toFixed(2));
+      marker.setAttribute("cy", y.toFixed(2));
+      marker.setAttribute("r", "3.4");
+      marker.dataset.key = stop.key;
+      markersGroup.appendChild(marker);
+      markerEls.set(stop.key, marker);
+    });
+
+    function getStopForYear(year) {
+      return journeyStops.find((stop) => year >= stop.start && year <= stop.end) || journeyStops[0];
+    }
+
+    function setActiveMarker(stop) {
+      const key = `${stop.lat.toFixed(3)}|${stop.lon.toFixed(3)}`;
+      markerEls.forEach((marker, markerKey) => {
+        marker.classList.toggle("is-active", markerKey === key);
+      });
+
+      const { x, y } = project(stop.lat, stop.lon);
+      activePulse.setAttribute("cx", x.toFixed(2));
+      activePulse.setAttribute("cy", y.toFixed(2));
+      activePin.setAttribute("cx", x.toFixed(2));
+      activePin.setAttribute("cy", y.toFixed(2));
+      return { x, y };
+    }
+
+    function positionLabel(x, y) {
+      const rect = journeyMap.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const labelRect = journeyLabel.getBoundingClientRect();
+      const halfWidth = labelRect.width / 2;
+      const minX = halfWidth + 10;
+      const maxX = rect.width - halfWidth - 10;
+      const minY = labelRect.height + 10;
+      const maxY = rect.height - 10;
+
+      const px = (x / mapWidth) * rect.width;
+      const py = (y / mapHeight) * rect.height;
+      const clampedX = Math.max(minX, Math.min(maxX, px));
+      const clampedY = Math.max(minY, Math.min(maxY, py));
+
+      journeyLabel.style.left = `${clampedX}px`;
+      journeyLabel.style.top = `${clampedY}px`;
+    }
+
+    function updateJourney() {
+      const year = Number(journeyRange.value);
+      const stop = getStopForYear(year);
+      const cityName = stop.city[currentLang] || stop.city.en;
+
+      journeyYear.textContent = String(year);
+      journeyLocation.textContent = cityName;
+      journeyLabelYear.textContent = String(year);
+      journeyLabelCity.textContent = cityName;
+      journeyRange.setAttribute("aria-valuetext", `${year} ${cityName}`);
+
+      const minYear = Number(journeyRange.min);
+      const maxYear = Number(journeyRange.max);
+      const pct = ((year - minYear) / (maxYear - minYear)) * 100;
+      journeyRange.style.setProperty("--range-pct", `${pct}%`);
+
+      const { x, y } = setActiveMarker(stop);
+      positionLabel(x, y);
+    }
+
+    journeyRange.addEventListener("input", updateJourney);
+    window.addEventListener("resize", updateJourney);
+
+    journeyUpdater = updateJourney;
+    updateJourney();
+  }
 
   // Scrollspy nav
   const navLinks = Array.from(document.querySelectorAll("[data-nav]"));
