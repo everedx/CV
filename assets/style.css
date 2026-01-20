@@ -694,7 +694,7 @@ p{ line-height: 1.65; margin: 10px 0; }
   border: 1px solid var(--neon-border);
   overflow: hidden;
   aspect-ratio: 2 / 1;
-  min-height: 240px;
+  min-height: clamp(160px, 40vw, 240px);
   background:
     radial-gradient(120% 120% at 80% 0%, color-mix(in srgb, var(--neon) 10%, transparent) 0%, transparent 60%),
     radial-gradient(120% 120% at 10% 100%, color-mix(in srgb, var(--neon) 12%, transparent) 0%, transparent 65%),
